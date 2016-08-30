@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1">
+  
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+	<!-- <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+	<script id="pbs-pill-widget">
+	(function() {
+		//for browsers that dont have asyc attribute, we can recreate behaviour by dynamically creating a script DOM element
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = 'http://widget.dev/build/bundle.js?product=1234';
+		// script.src = 'http://andy-dev.github.io/bundleMin.js';
+		var entry = document.getElementsByTagName('script')[0];
+		    entry.parentNode.insertBefore(script, entry);
+	})();
+	</script>
+
+	<h1>Publisher Test Page</h1>
+</body>
+</html>
+
+
+<head>

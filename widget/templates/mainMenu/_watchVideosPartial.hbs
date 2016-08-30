@@ -1,0 +1,37 @@
+<li class="myPBS-pillMenu-menuSection">
+	<a class="myPBS-pillMenu-wsmenu-click" href="#">
+		<i class="menu-icon myPBS-pillMenu-icon-tv"></i>&nbsp;&nbsp;Watch Videos <span class="myPBS-pillMenu-arrow"></span>
+	</a>
+
+	<div class="myPBS-pillMenu-megamenu clearfix">    
+		<ul class="nav nav-tabs tabs-left col-lg-3">
+		   
+		 {{#each WatchVideos.MenuItem.SubMenu.LeftMenu}}
+		  	{{#if @first}}
+					<li class="active"><a href='#p-watchvideos-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+				{{else}}
+					<li><a href='#p-watchvideos-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+				{{/if}}
+			{{/each}}
+	
+			<li><a href="#">Browse All By List</a></li>
+		</ul>
+		
+		<div class="tab-content col-lg-8">
+    	{{#each WatchVideos.MenuItem.SubMenu.RightMenu}}
+				{{#if @first}}
+					<div class="tab-pane active fade in" id="p-watchvideos-1">
+						{{> subMenuRightPartial}}
+					</div>
+				{{else}}
+					<div class="tab-pane fade in" id='p-watchvideos-{{math @index "+" 1}}'>
+						{{> subMenuRightPartial}}
+					</div>	
+      	{{/if}}
+    	{{/each}}
+		</div>
+	</div>
+</li>
+
+
+

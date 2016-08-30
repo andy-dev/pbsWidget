@@ -1,0 +1,26 @@
+<div class="row">
+	{{#each (getHtmlElements Contents ContentsVisible)}}
+		<div class="col-lg-4 col-md-4 col-xs-12">
+			<a href="{{Link}}"><img src="http://mypbs.org/{{Image}}" alt="This is Product Name"></a>
+			<h4>{{Header}}</h4>
+			<small>{{Description}}</small>
+		</div>
+	{{/each}}
+</div>
+
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-xs-12">
+		<h3>{{Header}}</h3>
+
+			<ul class="col-lg-4 col-md-4 col-xs-12 link-list">											
+				{{#each (createLeftLiColumn RightMenuSub)}}
+					<li><a href='{{link}}'>{{leftLiItem}}</a></li>
+				{{/each}}	
+			</ul>
+			<ul class="col-lg-4 col-md-4 col-xs-12 link-list">	
+				{{#each (createRightLiColumn RightMenuSub)}}				
+					<li><a href='{{link}}'>{{rightLiItem}}</a></li>
+				{{/each}}
+			</ul>
+	</div>
+</div>
