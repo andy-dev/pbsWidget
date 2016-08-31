@@ -100,6 +100,22 @@ Helpers are use to create more semantic markup. The file handleBarsHelpers.js ha
 ## Handlebars Templating Partials
 To avoid having big hard to read files, we use partials to break up our templates. The templates are organize with the main template inside templates folder and then two additional folders, one representing the top level items (programming, watch videos, feeds, engage + promote) and a subMenu folder that represents the dropdown menus. Handlebars partials are registered inside handleBarsPartials.js. 
 
+## How to Distribute the Widget
+Once the bundle.js file is built and minified, the client should use the following code to add to the first line of the body element. This code is asynchronous non-blocking.
+
+```
+<script id="pbs-pill-widget">
+	(function() {
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = 'POINT TO WERE bundle.js FILE IS HOSTED';
+		var entry = document.getElementsByTagName('script')[0];
+		    entry.parentNode.insertBefore(script, entry);
+	})();
+	</script>
+
+```
+
 
 ## Congratulations
 **Congratulations you are done!** 
