@@ -27,10 +27,28 @@ require("./handleBarsHelpers.js");
     });
 	}
 
+	function mapMenuItems(rootMenu, subMenus) {
+		subMenus.forEach(function (subMenu) {
+			subMenu.RootMenuID = rootMenu.MenuID;
+		});
+	}
+
+	function mapRootMenuItems(menuItems) {
+		menuItems.forEach(function (rootMenu) {
+			var rootMenuItem = rootMenu.MenuItem;
+
+			mapMenuItems(rootMenuItem, rootMenuItem.SubMenu.LeftMenu);
+			mapMenuItems(rootMenuItem, rootMenuItem.SubMenu.RightMenu);
+		});
+	}
+
 	function renderPbsPill(serverResponse){
 	  var template = require('../templates/mainTemplate.hbs');
 	  var menuServerResponseMock = require('../response.json');
-	
+		
+	  mapRootMenuItems(menuServerResponseMock.d);
+
+
 	  var div = document.createElement('div');
 	  div.innerHTML = template({ MainMenu : menuServerResponseMock.d });
 

@@ -73,10 +73,28 @@
 	    });
 		}
 
+		function mapMenuItems(rootMenu, subMenus) {
+			subMenus.forEach(function (subMenu) {
+				subMenu.RootMenuID = rootMenu.MenuID;
+			});
+		}
+
+		function mapRootMenuItems(menuItems) {
+			menuItems.forEach(function (rootMenu) {
+				var rootMenuItem = rootMenu.MenuItem;
+
+				mapMenuItems(rootMenuItem, rootMenuItem.SubMenu.LeftMenu);
+				mapMenuItems(rootMenuItem, rootMenuItem.SubMenu.RightMenu);
+			});
+		}
+
 		function renderPbsPill(serverResponse){
 		  var template = __webpack_require__(41);
 		  var menuServerResponseMock = __webpack_require__(43);
-		
+			
+		  mapRootMenuItems(menuServerResponseMock.d);
+
+
 		  var div = document.createElement('div');
 		  div.innerHTML = template({ MainMenu : menuServerResponseMock.d });
 
@@ -11144,44 +11162,44 @@
 
 	  return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(data && data.first),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "");
 	},"2":function(container,depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=container.escapeExpression, alias2=depth0 != null ? depth0 : {}, alias3=helpers.helperMissing, alias4="function";
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
 	  return "					<li class=\"active\"><a href='#p-"
-	    + alias1(container.lambda(((stack1 = ((stack1 = ((stack1 = (data && data.root)) && stack1.MainMenu)) && stack1.MenuItem)) && stack1.MenuID), depth0))
+	    + alias4(((helper = (helper = helpers.RootMenuID || (depth0 != null ? depth0.RootMenuID : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"RootMenuID","hash":{},"data":data}) : helper)))
 	    + "-"
-	    + alias1(((helper = (helper = helpers.Index || (depth0 != null ? depth0.Index : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"Index","hash":{},"data":data}) : helper)))
+	    + alias4(((helper = (helper = helpers.Index || (depth0 != null ? depth0.Index : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Index","hash":{},"data":data}) : helper)))
 	    + "' data-toggle=\"tab\">"
-	    + alias1(((helper = (helper = helpers.Text || (depth0 != null ? depth0.Text : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"Text","hash":{},"data":data}) : helper)))
+	    + alias4(((helper = (helper = helpers.Text || (depth0 != null ? depth0.Text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Text","hash":{},"data":data}) : helper)))
 	    + "</a></li>\n";
 	},"4":function(container,depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=container.escapeExpression, alias2=depth0 != null ? depth0 : {}, alias3=helpers.helperMissing, alias4="function";
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
 	  return "					<li><a href='#p-"
-	    + alias1(container.lambda(((stack1 = ((stack1 = ((stack1 = (data && data.root)) && stack1.MainMenu)) && stack1.MenuItem)) && stack1.MenuID), depth0))
+	    + alias4(((helper = (helper = helpers.RootMenuID || (depth0 != null ? depth0.RootMenuID : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"RootMenuID","hash":{},"data":data}) : helper)))
 	    + "-"
-	    + alias1(((helper = (helper = helpers.Index || (depth0 != null ? depth0.Index : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"Index","hash":{},"data":data}) : helper)))
+	    + alias4(((helper = (helper = helpers.Index || (depth0 != null ? depth0.Index : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Index","hash":{},"data":data}) : helper)))
 	    + "' data-toggle=\"tab\">"
-	    + alias1(((helper = (helper = helpers.Text || (depth0 != null ? depth0.Text : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"Text","hash":{},"data":data}) : helper)))
+	    + alias4(((helper = (helper = helpers.Text || (depth0 != null ? depth0.Text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Text","hash":{},"data":data}) : helper)))
 	    + "</a></li>\n";
 	},"6":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
 	  return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(data && data.first),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "");
 	},"7":function(container,depth0,helpers,partials,data) {
-	    var stack1;
+	    var stack1, helper;
 
 	  return "					<div class=\"tab-pane active fade in\" id=\"p-"
-	    + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (data && data.root)) && stack1.MainMenu)) && stack1.MenuItem)) && stack1.MenuID), depth0))
-	    + "-1\">\n"
+	    + container.escapeExpression(((helper = (helper = helpers.RootMenuID || (depth0 != null ? depth0.RootMenuID : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"RootMenuID","hash":{},"data":data}) : helper)))
+	    + "-1\">	\n"
 	    + ((stack1 = container.invokePartial(partials.subMenuRightPartial,depth0,{"name":"subMenuRightPartial","data":data,"indent":"\t\t\t\t\t\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
 	    + "					</div>\n";
 	},"9":function(container,depth0,helpers,partials,data) {
-	    var stack1, alias1=container.escapeExpression;
+	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
 	  return "					<div class=\"tab-pane fade in\" id='p-"
-	    + alias1(container.lambda(((stack1 = ((stack1 = ((stack1 = (data && data.root)) && stack1.MainMenu)) && stack1.MenuItem)) && stack1.MenuID), depth0))
+	    + alias3(((helper = (helper = helpers.RootMenuID || (depth0 != null ? depth0.RootMenuID : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"RootMenuID","hash":{},"data":data}) : helper)))
 	    + "-"
-	    + alias1((helpers.math || (depth0 && depth0.math) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(data && data.index),"+",1,{"name":"math","hash":{},"data":data}))
+	    + alias3((helpers.math || (depth0 && depth0.math) || alias2).call(alias1,(data && data.index),"+",1,{"name":"math","hash":{},"data":data}))
 	    + "'>\n"
 	    + ((stack1 = container.invokePartial(partials.subMenuRightPartial,depth0,{"name":"subMenuRightPartial","data":data,"indent":"\t\t\t\t\t\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
 	    + "					</div>	\n";
@@ -11192,7 +11210,7 @@
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.MenuItem : depth0)) != null ? stack1.Text : stack1), depth0))
 	    + " <span class=\"myPBS-pillMenu-arrow\"></span>\n	</a>\n\n	<div class=\"myPBS-pillMenu-megamenu clearfix\">    \n		<ul class=\"nav nav-tabs tabs-left col-lg-3\">\n		   \n"
 	    + ((stack1 = helpers.each.call(alias3,((stack1 = ((stack1 = (depth0 != null ? depth0.MenuItem : depth0)) != null ? stack1.SubMenu : stack1)) != null ? stack1.LeftMenu : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + "	\n			<li>\n				<a href=\"http://mypbs.org/"
+	    + "	\n			<li>\n				<a href=\"http://mypbs.org"
 	    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.MenuItem : depth0)) != null ? stack1.SubMenu : stack1)) != null ? stack1.BrowseButton : stack1)) != null ? stack1.Url : stack1), depth0))
 	    + "\">"
 	    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.MenuItem : depth0)) != null ? stack1.SubMenu : stack1)) != null ? stack1.BrowseButton : stack1)) != null ? stack1.Text : stack1), depth0))

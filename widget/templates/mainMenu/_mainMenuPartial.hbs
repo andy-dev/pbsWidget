@@ -8,25 +8,25 @@
 		   
 		 {{#each MenuItem.SubMenu.LeftMenu}}
 		  	{{#if @first}}
-					<li class="active"><a href='#p-{{@root.MainMenu.MenuItem.MenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+					<li class="active"><a href='#p-{{RootMenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
 				{{else}}
-					<li><a href='#p-{{@root.MainMenu.MenuItem.MenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+					<li><a href='#p-{{RootMenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
 				{{/if}}
 			{{/each}}
 	
 			<li>
-				<a href="http://mypbs.org/{{MenuItem.SubMenu.BrowseButton.Url}}">{{MenuItem.SubMenu.BrowseButton.Text}}</a>
+				<a href="http://mypbs.org{{MenuItem.SubMenu.BrowseButton.Url}}">{{MenuItem.SubMenu.BrowseButton.Text}}</a>
 			</li>
 		</ul>
 		
 		<div class="tab-content col-lg-8">
     	{{#each MenuItem.SubMenu.RightMenu}}
 				{{#if @first}}
-					<div class="tab-pane active fade in" id="p-{{@root.MainMenu.MenuItem.MenuID}}-1">
-						{{> subMenuRightPartial}}
+					<div class="tab-pane active fade in" id="p-{{RootMenuID}}-1">	
+						{{> subMenuRightPartial }}		
 					</div>
 				{{else}}
-					<div class="tab-pane fade in" id='p-{{@root.MainMenu.MenuItem.MenuID}}-{{math @index "+" 1}}'>
+					<div class="tab-pane fade in" id='p-{{RootMenuID}}-{{math @index "+" 1}}'>
 						{{> subMenuRightPartial}}
 					</div>	
       	{{/if}}
