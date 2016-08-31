@@ -17,12 +17,9 @@
         <ul class="myPBS-pillMenu-mobile-sub myPBS-pillMenu-wsmenu-list">
           <li><a href="#" class="active"><i class="myPBS-pillMenu-icon-logo"></i></a></li>
 					
-					{{> watchVideosPartial}}
-					{{> programmingPartial}}
-					{{> engagePromotePartial}}
-					{{> developmentPartial}}
-					{{> stationManagementPartial}}
-					{{> feedsPartial}}
+					{{#each MainMenu}}
+						{{> mainMenuPartial}}
+					{{/each}}
 						
 					<li><a href="#" class="myPBS-pillMenu-openCloseBtn"><i class="glyphicon glyphicon-chevron-left glyphicon-chevron-right"></i></a></li>
 				</ul>

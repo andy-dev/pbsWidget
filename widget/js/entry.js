@@ -32,14 +32,7 @@ require("./handleBarsHelpers.js");
 	  var menuServerResponseMock = require('../response.json');
 	
 	  var div = document.createElement('div');
-	  div.innerHTML = template({
-	  	WatchVideos         :menuServerResponseMock.d[0],
-			Programming         :menuServerResponseMock.d[1],
-			EngagePromote       :menuServerResponseMock.d[2],
-			Development         :menuServerResponseMock.d[3],
-			StationManagement   :menuServerResponseMock.d[4],
-			Feeds               :menuServerResponseMock.d[5]
-	  });
+	  div.innerHTML = template({ MainMenu : menuServerResponseMock.d });
 
 	  var appendTo = document.getElementById('pbs-pill-widget'); 
 	  appendTo.parentNode.insertBefore(div, appendTo);

@@ -1,12 +1,6 @@
 var Handlebars = require('handlebars-template-loader/runtime');
 
-Handlebars.registerHelper('listItem', function(from, to, context, options){
-	var item = "";
-	for(var i = from, j=to; i < j; i++){
-		item += options.fn(context[i]);
-	}
-	return item;
-});
+
 
 Handlebars.registerHelper('createLeftLiColumn', function(rightMenuSub){
 	var leftColumnLength = Math.ceil(rightMenuSub.length/2);
@@ -69,6 +63,3 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options){
 	}[operator];
 });
 
-Handlebars.registerHelper("incIndex", function(value, options){
-	return parseInt(value) + 1;
-});

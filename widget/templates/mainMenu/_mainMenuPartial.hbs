@@ -1,0 +1,39 @@
+<li class="myPBS-pillMenu-menuSection">
+	<a class="myPBS-pillMenu-wsmenu-click" href="#">
+		<i class="menu-icon myPBS-pillMenu-icon-tv"></i>&nbsp;&nbsp;{{MenuItem.Text}} <span class="myPBS-pillMenu-arrow"></span>
+	</a>
+
+	<div class="myPBS-pillMenu-megamenu clearfix">    
+		<ul class="nav nav-tabs tabs-left col-lg-3">
+		   
+		 {{#each MenuItem.SubMenu.LeftMenu}}
+		  	{{#if @first}}
+					<li class="active"><a href='#p-{{@root.MainMenu.MenuItem.MenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+				{{else}}
+					<li><a href='#p-{{@root.MainMenu.MenuItem.MenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+				{{/if}}
+			{{/each}}
+	
+			<li>
+				<a href="http://mypbs.org/{{MenuItem.SubMenu.BrowseButton.Url}}">{{MenuItem.SubMenu.BrowseButton.Text}}</a>
+			</li>
+		</ul>
+		
+		<div class="tab-content col-lg-8">
+    	{{#each MenuItem.SubMenu.RightMenu}}
+				{{#if @first}}
+					<div class="tab-pane active fade in" id="p-{{@root.MainMenu.MenuItem.MenuID}}-1">
+						{{> subMenuRightPartial}}
+					</div>
+				{{else}}
+					<div class="tab-pane fade in" id='p-{{@root.MainMenu.MenuItem.MenuID}}-{{math @index "+" 1}}'>
+						{{> subMenuRightPartial}}
+					</div>	
+      	{{/if}}
+    	{{/each}}
+		</div>
+	</div>
+</li>
+
+
+
