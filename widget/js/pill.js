@@ -14,7 +14,7 @@ module.exports = function(){
       e.preventDefault();
       myPBS_PILL_MENU.$('.myPBS-pillMenu-wsmenu').toggleClass('myPBS-pillMenu-collapsedMenu');
       myPBS_PILL_MENU.$('.myPBS-pillMenu-wsmenu').addClass('myPBS-pillMenu-hideMenuSections');
-      myPBS_PILL_MENU.$(this).find('i').toggleClass('glyphicon-chevron-right');
+      myPBS_PILL_MENU.$(this).find('i').toggleClass('myPBS-pillMenu-icon-chevron-right');
       if(myPBS_PILL_MENU.open == false){
         myPBS_PILL_MENU.open = true;
         setTimeout(myPBSmenuTimer, 500);

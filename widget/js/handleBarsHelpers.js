@@ -1,33 +1,6 @@
 var Handlebars = require('handlebars-template-loader/runtime');
 
 
-
-Handlebars.registerHelper('createLeftLiColumn', function(rightMenuSub){
-	var leftColumnLength = Math.ceil(rightMenuSub.length/2);
-	var results = [];
-
-	for(var i=0; i < leftColumnLength; i++){
-  	results.push({
-    	leftLiItem : rightMenuSub[i].Text,
-    	link       : rightMenuSub[i].Url
-    })
-  } 
-  return results; 
-});
-
-Handlebars.registerHelper('createRightLiColumn', function(rightMenuSub){	
-	var rightColumnLength = Math.floor(rightMenuSub.length/2);
-	var results = [];
-
-	for(var i=0; i < rightColumnLength; i++){
-  	results.push({
-    	rightLiItem : rightMenuSub[i].Text,
-    	link        : rightMenuSub[i].Url
-    })
-  } 
-  return results; 
-});
-
 Handlebars.registerHelper('getHtmlElements', function(contentsArray, contentsVisibleFlag){
 	var parser = new DOMParser;
 	var htmlContents =[];
@@ -45,8 +18,7 @@ Handlebars.registerHelper('getHtmlElements', function(contentsArray, contentsVis
 		    })
 	  	}
 	  }	
-	};
-	  
+	};  
 	return htmlContents;
 });
 
