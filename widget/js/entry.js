@@ -44,13 +44,12 @@ require("./handleBarsHelpers.js");
 
 	function renderPbsPill(serverResponse){
 	  var template = require('../templates/mainTemplate.hbs');
-	  var menuServerResponseMock = require('../response.json');
+	  // var menuServerResponseMock = require('../response.json');
 		
-	  mapRootMenuItems(menuServerResponseMock.d);
-
+	  mapRootMenuItems(serverResponse.d);
 
 	  var div = document.createElement('div');
-	  div.innerHTML = template({ MainMenu : menuServerResponseMock.d });
+	  div.innerHTML = template({ MainMenu : serverResponse.d });
 
 	  var appendTo = document.getElementById('pbs-pill-widget'); 
 	  appendTo.parentNode.insertBefore(div, appendTo);
@@ -58,8 +57,8 @@ require("./handleBarsHelpers.js");
 	}
  
 	getPartials();
-	renderPbsPill();
-	// getPillData();
+	// renderPbsPill();
+	getPillData();
 	
 })();
 
