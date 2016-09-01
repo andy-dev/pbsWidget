@@ -3,9 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Widget</title>
+
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 </head>
 <body>
 	<p>Widget Page</p>
+
+
+	<script type="text/javascript">
+		
+		function getIP(){
+			$.getJSON("http://jsonip.com", getIP)
+
+		 	function getIP(response){
+		 		checkIP(response.ip)
+		 	}
+		}
+		
+	
+ 
+	function checkIP(ip){
+		
+	  var pbsUrl = "http://dev.mypbs.org/z/components/webservices/Pbsextensionservice.asmx/GetIPWhiteListForUser?strIPAddress="+ip;
+	  
+	  $.ajax({
+      method: 'get',
+      url: pbsUrl
+    })
+    .done(function(response) {
+     	console.log("success")
+     	console.log(response);   
+    })
+    .error(function (error) {
+      console.log(error);
+    });
+	}
+
+	getIP();
+
+	
+
+
+	</script>
 </body>
 </html>
 
