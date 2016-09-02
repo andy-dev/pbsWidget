@@ -14,6 +14,7 @@ require("./handleBarsHelpers.js");
 
 	initPbsPill();
 
+
 	function initPbsPill(){
 		PbsPillWidget.$.getJSON("http://jsonip.com", function(response){
 
