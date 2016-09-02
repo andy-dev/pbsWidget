@@ -7,37 +7,39 @@ require("./handleBarsHelpers.js");
 	
 	var PbsPillWidget = {};
 	var getHandleBarsPartials = require("./handleBarsPartials")
+	var template = require('../templates/mainTemplate.hbs');
 	var setOpenClosePillHandlers = require("./pill.js")
 	PbsPillWidget.$ = PbsPillWidget.jQuery = jQuery.noConflict(true);
 
-	function getIP(){
-		$.getJSON("http://jsonip.com", getIP)
 
-		function getIP(response){
-			checkIP(response.ip)
-		}
+	initPbsPill();
+
+	function initPbsPill(){
+		PbsPillWidget.$.getJSON("http://jsonip.com", function(response){
+
+			if(response["ip"] != undefined && response["ip"] != null){			
+				checkIP(response.ip)
+			}
+					
+		})	
 	};
 			
 	function checkIP(ip){	
 		var pbsUrl = "http://dev.mypbs.org/z/components/webservices/Pbsextensionservice.asmx/GetIPWhiteListForUser?strIPAddress="+ip;
 	  
-	  $.ajax({
-      method: 'get',
+	  PbsPillWidget.$.ajax({
+      method: 'GET',
       url: pbsUrl
     })
     .done(function(response) {
-     	console.log("success")
-     	var xml = response;
-     	$xml = $(response);
+     	var $xml = PbsPillWidget.$(response);
 
-     	if(($xml[0].getElementsByTagName("boolean")[0]).innerHTML === "true"){
+     	if($xml.length > 0  && ($xml[0].getElementsByTagName("boolean")[0]).innerHTML === "true" ){
      		getPillData();
      	};
   
     })
-    .error(function (error) {
-      console.log(error);
-    });
+    .error(function(error){ });
 	}
 
 
@@ -54,15 +56,22 @@ require("./handleBarsHelpers.js");
     	getHandleBarsPartials();
      	renderPbsPill(response);    
     })
-    .error(function (error) {
-      console.log(error);
-    });
+    .error(function(error) {});
 	}
+	
+	function renderPbsPill(serverResponse){  
+	  // var menuServerResponseMock = require('../response.json');
 
-	function mapMenuItems(rootMenu, subMenus) {
-		subMenus.forEach(function (subMenu) {
-			subMenu.RootMenuID = rootMenu.MenuID;
-		});
+		if(serverResponse.d.length > 0){
+		  mapRootMenuItems(serverResponse.d);
+
+		  var div = document.createElement('div');
+		  div.innerHTML = template({ MainMenu : serverResponse.d });
+
+		  var appendTo = document.getElementById('pbs-pill-widget'); 
+		  appendTo.parentNode.insertBefore(div, appendTo);
+		  setOpenClosePillHandlers();		
+		}
 	}
 
 	function mapRootMenuItems(menuItems) {
@@ -74,22 +83,12 @@ require("./handleBarsHelpers.js");
 		});
 	}
 
-	function renderPbsPill(serverResponse){
-	  var template = require('../templates/mainTemplate.hbs');
-	  // var menuServerResponseMock = require('../response.json');
-		
-	  mapRootMenuItems(serverResponse.d);
-
-	  var div = document.createElement('div');
-	  div.innerHTML = template({ MainMenu : serverResponse.d });
-
-	  var appendTo = document.getElementById('pbs-pill-widget'); 
-	  appendTo.parentNode.insertBefore(div, appendTo);
-	  setOpenClosePillHandlers();
+	function mapMenuItems(rootMenu, subMenus) {
+		subMenus.forEach(function (subMenu) {
+			subMenu.RootMenuID = rootMenu.MenuID;
+		});
 	}
 
-	getIP();
- 
 	
 })();
 

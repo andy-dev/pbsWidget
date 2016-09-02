@@ -18,7 +18,7 @@ Handlebars.registerHelper('getHtmlElements', function(contentsArray, contentsVis
 		    })
 	  	}
 	  }	
-	};  
+	} 
 	return htmlContents;
 });
 
