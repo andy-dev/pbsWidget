@@ -6,13 +6,42 @@ require("./handleBarsHelpers.js");
 (function PbsPillWidget(){
 	
 	var PbsPillWidget = {};
-	var getPartials = require("./handleBarsPartials")
+	var getHandleBarsPartials = require("./handleBarsPartials")
 	var setOpenClosePillHandlers = require("./pill.js")
 	PbsPillWidget.$ = PbsPillWidget.jQuery = jQuery.noConflict(true);
 
+	function getIP(){
+		$.getJSON("http://jsonip.com", getIP)
+
+		function getIP(response){
+			checkIP(response.ip)
+		}
+	};
+			
+	function checkIP(ip){	
+		var pbsUrl = "http://dev.mypbs.org/z/components/webservices/Pbsextensionservice.asmx/GetIPWhiteListForUser?strIPAddress="+ip;
+	  
+	  $.ajax({
+      method: 'get',
+      url: pbsUrl
+    })
+    .done(function(response) {
+     	console.log("success")
+     	var xml = response;
+     	$xml = $(response);
+
+     	if(($xml[0].getElementsByTagName("boolean")[0]).innerHTML === "true"){
+     		getPillData();
+     	};
+  
+    })
+    .error(function (error) {
+      console.log(error);
+    });
+	}
 
 
-	function getPillData(){
+	function getPillData(){		
 	  var pbsUrl = "http://dev.mypbs.org/z/components/webservices/Pbsextensionservice.asmx/GetMenuData";
 	  
 	  PbsPillWidget.$.ajax({
@@ -22,6 +51,7 @@ require("./handleBarsHelpers.js");
       url: pbsUrl
     })
     .done(function(response) {
+    	getHandleBarsPartials();
      	renderPbsPill(response);    
     })
     .error(function (error) {
@@ -57,10 +87,9 @@ require("./handleBarsHelpers.js");
 	  appendTo.parentNode.insertBefore(div, appendTo);
 	  setOpenClosePillHandlers();
 	}
+
+	getIP();
  
-	getPartials();
-	// renderPbsPill();
-	getPillData();
 	
 })();
 
