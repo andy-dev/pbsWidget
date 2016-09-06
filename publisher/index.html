@@ -18,8 +18,8 @@
 		//for browsers that dont have asyc attribute, we can recreate behaviour by dynamically creating a script DOM element
 		var script = document.createElement('script');
 		script.async = true;
-		script.src = 'http://widget.dev/build/bundle.js?product=1234';
-		// script.src = 'http://andy-dev.github.io/bundleMin.js';
+		// script.src = 'http://widget.dev/build/bundle.js?product=1234';
+		script.src = 'http://andy-dev.github.io/bundleMin.js';
 		var entry = document.getElementsByTagName('script')[0];
 		    entry.parentNode.insertBefore(script, entry);
 	})();

@@ -6,7 +6,7 @@ require("./handleBarsHelpers.js");
 (function PbsPillWidget(){
 	
 	var PbsPillWidget = {};
-	var getHandleBarsPartials = require("./handleBarsPartials")
+	var getHandleBarsPartials = require("./handleBarsPartials");
 	var template = require('../templates/mainTemplate.hbs');
 	var setOpenClosePillHandlers = require("./pill.js")
 	PbsPillWidget.$ = PbsPillWidget.jQuery = jQuery.noConflict(true);
@@ -23,7 +23,7 @@ require("./handleBarsHelpers.js");
 			}
 					
 		})	
-	};
+	}
 			
 	function checkIP(ip){	
 		var pbsUrl = "http://dev.mypbs.org/z/components/webservices/Pbsextensionservice.asmx/GetIPWhiteListForUser?strIPAddress="+ip;
