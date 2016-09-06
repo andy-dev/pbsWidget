@@ -10,16 +10,16 @@ PBS third party JavaScript widget
 For testing and development, we will use these two folders. (See Below on how to configure two domains locally)
 
 ## Publisher 
-The publisher acts as a client where we inject our JS and see how it renders. Feel free to add librares and changes to account for any side effects of the widget. In our index.html, we have a script tag with an IIFE that loads our widget with out blocking the client page. 
+The publisher acts as a client where we inject our JS and see how it renders. Feel free to add librares and changes to test for any side effects of the widget. In our index.html, we have a script tag with an IIFE that loads our widget with out blocking the client's page. 
 
 ### Widget
 The widget folder contains all development for our third party JavaScript. In this folder we have all of our needed libraries for creating the widget such as webpack, handlebars etc.
 
 ## Development and Testing SetUp 
 
-To have a testing and development enviroment we will use to domains (mac instructions). Macs come with an apache server and will use that for development.
+To have a testing and development enviroment we will use two domains (mac instructions). Macs come with an apache server that we will use for development.
 
-For the following using vim, nano or a text editor of your choice
+For the following use vim, nano or a text editor of your choice
 
 1 Find your host settings in /etc/hosts
 2 Add the following to your settings
@@ -50,11 +50,13 @@ AllowOverride All
 Options Indexes MultiViews FollowSymLinks
 Require all granted
 </Directory>
+
 ```
 
 5  Navigate to /Library/WebServer/Documents
 ```
-` $sudo apachectl start`
+ $sudo apachectl start
+
 ```
 6  You can now navigate to publisher.dev or widget.dev in your browser 
 
@@ -64,7 +66,9 @@ To run this locally you will need node.
 
 Run:
 ```
-` $ npm install`
+
+ $ npm install
+
 ```
 
 ## webpack.config
@@ -98,7 +102,7 @@ Run:
 Helpers are use to create more semantic markup. The file handleBarsHelpers.js has all functions created to parse data received from the webServer. 
 
 ## Handlebars Templating Partials
-To avoid having big hard to read files, we use partials to break up our templates. The templates are organize with the main template inside templates folder and then two additional folders, one representing the top level items (programming, watch videos, feeds, engage + promote) and a subMenu folder that represents the dropdown menus. Handlebars partials are registered inside handleBarsPartials.js. 
+To avoid having big long hard to read files, we use partials to break up our templates. The templates are organize with the main template inside templates folder and then two additional folders, one representing the top level items (programming, watch videos, feeds, engage + promote) and a subMenu folder that represents the dropdown menus. Handlebars partials are registered inside handleBarsPartials.js. 
 
 ## How to Distribute the Widget
 Once the bundle.js file is built and minified, the client should use the following code to add to the first line of the body element. This code is asynchronous non-blocking.
