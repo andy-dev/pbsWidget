@@ -72,7 +72,7 @@ Run:
 ```
 
 ## IP 
-There are many free services that can be used to check the clients IP. We are using JSONIP(unlimited) and FREEGEOIP(10,000 per minute) as a fallback. Some other providers include: geobytes.com, geoplugin.com, ip-api, ipify.org, ipinfo.io, ipinfodb.com that can be added as fallback if necesarry. 
+There are many free services that can be used to check the clients IP. We are using JSONIP(unlimited) and FREEGEOIP(10,000 per hour) as a fallback. Some other providers include: geobytes.com, geoplugin.com, ip-api, ipify.org, ipinfo.io, ipinfodb.com that can be added as fallback if necesarry. 
 
 
 ## webpack.config
