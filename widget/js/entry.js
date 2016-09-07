@@ -16,12 +16,18 @@ require("./handleBarsHelpers.js");
 
 
 	function initPbsPill(){
-		PbsPillWidget.$.getJSON("http://jsonip.com", function(response){
+		PbsPillWidget.$.getJSON("//jsonip.com", function(response) {
 
 			if(response["ip"] != undefined && response["ip"] != null){			
 				checkIP(response.ip)
+
+			} else {
+
+				PbsPillWidget.$.getJSON("//freegeoip.net/json/?callback=?", function(data){				
+					checkIP(data.ip)
+				})
 			}
-					
+
 		})	
 	}
 			
