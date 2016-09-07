@@ -60,17 +60,17 @@ require("./handleBarsHelpers.js");
     .error(function(error) {});
 	}
 	
+
 	function renderPbsPill(serverResponse){  
 	  // var menuServerResponseMock = require('../response.json');
 
 		if(serverResponse.d.length > 0){
 		  mapRootMenuItems(serverResponse.d);
 
-		  var div = document.createElement('div');
-		  div.innerHTML = template({ MainMenu : serverResponse.d });
+		  var pbsPillDiv = document.createElement('div');
+		  pbsPillDiv.innerHTML = template({ MainMenu : serverResponse.d });
 
-		  var appendTo = document.getElementById('pbs-pill-widget'); 
-		  appendTo.parentNode.insertBefore(div, appendTo);
+		  document.body.insertBefore(pbsPillDiv, document.body.firstChild)
 		  setOpenClosePillHandlers();		
 		}
 	}
