@@ -1,14 +1,13 @@
-require("../styles/myPBS-pill-menu.css");
-require("./bootstrapTab.js");
-require("./handleBarsHelpers.js");
-
-
 (function PbsPillWidget(){
+
+	require("../styles/myPBS-pill-menu.css");
+	require("./bootstrapTab.js");
+	require("./handleBarsHelpers.js");
 	
 	var PbsPillWidget = {};
 	var getHandleBarsPartials = require("./handleBarsPartials");
 	var template = require('../templates/mainTemplate.hbs');
-	var setOpenClosePillHandlers = require("./pill.js")
+	var setOpenClosePillHandlers = require("./pill.js");
 	PbsPillWidget.$ = PbsPillWidget.jQuery = jQuery.noConflict(true);
 
 
@@ -20,9 +19,7 @@ require("./handleBarsHelpers.js");
 
 			if(response["ip"] != undefined && response["ip"] != null){			
 				checkIP(response.ip)
-
 			} else {
-
 				PbsPillWidget.$.getJSON("//freegeoip.net/json/?callback=?", function(data){				
 					checkIP(data.ip)
 				})

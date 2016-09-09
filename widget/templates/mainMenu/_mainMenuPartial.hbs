@@ -8,7 +8,7 @@
 		   
 		 {{#each MenuItem.SubMenu.LeftMenu}}
 		  	{{#if @first}}
-					<li class="active"><a href='#p-{{RootMenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
+					<li class="active"><a href='#p-{{RootMenuID}}-{{Index}}' data-toggle="tab">{{{Text}}}</a></li>
 				{{else}}
 					<li><a href='#p-{{RootMenuID}}-{{Index}}' data-toggle="tab">{{Text}}</a></li>
 				{{/if}}
