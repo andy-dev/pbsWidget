@@ -12,10 +12,20 @@ For testing and development, we will use these two folders. (See Below on how to
 ## Publisher 
 The publisher acts as a client where we inject our JS and see how it renders. Feel free to add librares and changes to test for any side effects of the widget. In our index.html, we have a script tag with an IIFE that loads our widget with out blocking the client's page. 
 
-### Widget
+## Widget
 The widget folder contains all development for our third party JavaScript. In this folder we have all of our needed libraries for creating the widget such as webpack, handlebars etc.
 
 ## Development and Testing SetUp 
+
+### Option 1
+For a quick setup for development, you can use any server such as:
+
+```
+python -m SimpleHTTPServer
+
+```
+
+### Opction 2
 
 To have a testing and development enviroment we will use two domains (mac instructions). Macs come with an apache server that we will use for development.
 
