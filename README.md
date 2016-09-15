@@ -17,15 +17,55 @@ The widget folder contains all development for our third party JavaScript. In th
 
 ## Development and Testing SetUp 
 
-### Option 1
-For a quick setup for development, you can use any server such as:
+For developement, in order to serve your page and script files to browser, you will need a web server software running in your machine. file:// protocol does not have a domain component which makes it impossible to simulate cross-domain environment. 
+
+
+### Option 1 (windows)
+
+If you are using a windows you will need to download and Install Apache. [Apache](http://httpd.apache.org). Alternatively you can check out Wamp-Server, PHP.
+
+For the following use vim, nano or a text editor of your choice
+
+1 Find your host settings in C:/windows/system32/drivers/etc/hosts
+2 Add the following to your settings
 
 ```
-python -m SimpleHTTPServer
+   127.0.0.1 publisher.dev
+   127.0.0.1 widget.dev
+```
+
+3  Find etc/apache2/httpd.conf and add the following using vim nano or a text editor:
+ 
+```
+<VirtualHost *:80>
+  ServerName publisher.dev
+  DocumentRoot "/Users/username/project/publisher
+</VirtualHost>
+<VirtualHost *:80>
+   ServerName widget.dev
+   DocumentRoot "/Users/username/project/widget"
+</VirtualHost>
+```
+
+4  In some cases you might have to do the following in etc/apache2/httpd.conf
+
+```
+<Directory "/Users/username/project/">
+AllowOverride All
+Options Indexes MultiViews FollowSymLinks
+Require all granted
+</Directory>
 
 ```
 
-### Opction 2
+5  Navigate to /Library/WebServer/Documents
+```
+ $sudo apachectl start
+
+```
+6  You can now navigate to publisher.dev or widget.dev in your browser 
+
+### Option 2(mac instructions)
 
 To have a testing and development enviroment we will use two domains (mac instructions). Macs come with an apache server that we will use for development.
 
